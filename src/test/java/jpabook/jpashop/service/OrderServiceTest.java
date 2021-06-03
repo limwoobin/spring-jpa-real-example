@@ -8,12 +8,15 @@ import jpabook.jpashop.domain.item.Book;
 import jpabook.jpashop.domain.item.Item;
 import jpabook.jpashop.exception.NotEnoughStockException;
 import jpabook.jpashop.repository.OrderRepository;
+import jpabook.jpashop.repository.OrderSearch;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+
+import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThatThrownBy;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -25,6 +28,13 @@ public class OrderServiceTest {
     @Autowired EntityManager em;
     @Autowired OrderService orderService;
     @Autowired OrderRepository orderRepository;
+
+    @Test
+    public void 임시로() {
+        System.out.println("=================================");
+//        Order order = orderRepository.findOne(4L);
+        List<Order> orders = orderRepository.findAll(new OrderSearch());
+    }
 
     @Test
     public void 상품주문() throws Exception {
