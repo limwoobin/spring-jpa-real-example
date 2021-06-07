@@ -24,4 +24,11 @@ public class TestService {
     public Test findOne(Long id) {
         return testRepository.findTest(id);
     }
+
+    @Transactional
+    public void insTest() {
+        Test test = new Test();
+        test.setName("test");
+        testRepository.save(test);
+    }
 }

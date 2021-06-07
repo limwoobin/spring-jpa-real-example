@@ -21,4 +21,8 @@ public class TestRepository {
         return em.createQuery("select t From Test t" , Test.class)
                 .getResultList();
     }
+
+    public void save(Test test) {
+        em.persist(test);
+    }
 }
